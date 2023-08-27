@@ -28,7 +28,7 @@ public class StreamDataUtils {
      */
     public static Stream<String> obtainItemStream(String path) throws IOException {
         try {
-            return Files.lines(Paths.get(path))
+            return Files.lines(Paths.get(new File(path).getAbsolutePath()))
                 // each line contains more items, split by " "
                 .map(line -> line.split(" "))
                 .flatMap(Arrays::stream);
